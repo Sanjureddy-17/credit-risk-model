@@ -75,7 +75,7 @@ def calculate_credit_score(input_df, base_score=300, scale_length=600):
 
     rating = get_rating(credit_score[0])
 
-    return default_probability.flatten()[0], int(credit_score), rating
+    return float(default_probability.flatten()[0]), int(float(credit_score)), rating
 
 def predict(age, income, loan_amount, loan_tenure_months, avg_dpd_per_delinquency, delinquency_ratio,
                 credit_utilization_ratio, num_open_accounts, residence_type, loan_purpose, loan_type):
@@ -86,8 +86,3 @@ def predict(age, income, loan_amount, loan_tenure_months, avg_dpd_per_delinquenc
     probability, credit_score, rating = calculate_credit_score(input_df)
 
     return probability, credit_score, rating
-
-if __name__ == '__main__':
-    age = 25
-    income = 3546786
-    print(predict(age, income))
